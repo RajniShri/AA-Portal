@@ -15,6 +15,8 @@
             <div id="window-id" *ngIf="showWindow" class="windowid">
                 <!-- main greetings -->
                 <div class="greetings main ">Hi! I am <span id="app-name"> {{name}}</span> Agent Assist
+                    <span id="min-span" style="    right: 85px;"><button id="close-button" onclick="displayWindow(true)">
+                        <i class="fa fa-question-circle-o" style="font-size: 15px;"></i></button></span>
                     <span id="min-span"><button id="close-button" onclick="minWindow()">
                         <i class="fa fa-window-minimize" style="font-size: 10px;"></i></button></span>
                     <!-- close buttton -->
@@ -30,7 +32,8 @@
                             <!-- <span id="contentselected"></span> -->
                         </span>
                     </div>
-                    <div id="content-optionsid"> </div>
+                    <div id="content-optionsid"></div>
+                    
                 </div>
                 <!-- <div id="ask-more-info" style="display: none;" id="fourth-row">
                     <br><br>
@@ -42,21 +45,28 @@
                         <form>
                             <span id="kedb-true" class="message to">
                                 <div>We are aware of this issue and working on it to make it better.</div>
-                                <div id="ticketid"></div>
+                                <div id="ticketid"></div><div style="text-align: center;color: gainsboro;">or</div>
+                                <a class="text-align-center" onclick="createIncident()" href="#">Click here</a> to create a new incident.<br>
                                 <div id="suggestion"></div>
                                 <br>
                                 <!-- feedback -->
-                                <div id="feedback">
-                                    <div>Please provide your valuable feedback</div>
-                                    <textarea id="userfeedback" required placeholder="" rows="2" cols="38" name="userfeedback" wrap="hard"></textarea>
-                                    <i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i>
-                                    <i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i>
-                                </div>
+                                <div id="feedback" class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-sm-6" style="background-color:white;padding: 0px;">Is it helpful?</div>
+                                        <div class="col-sm-6" style="background-color:white;padding: 0px;"><i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i><i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i></div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-8" style="background-color:white;padding: 0px;"><input type="text" class="bubble" id="userfeedback" required placeholder="feedback"  name="userfeedback" wrap="hard"></input></div>
+                                        <div class="col-sm-4" style="background-color:white;padding: 0px;"><button id="blink" class="feedback-submit" onclick="provideFeedback(true)" type="button ">Submit</button></div>
+                                      </div>
+                                    </div>
+                                
+                                
                                 <div id="feedback-ok">
                                     <div>Thank you for your feedback.</div>
                                 </div>
                                 <br>
-                                <a class="text-align-center" onclick="createIncident()" href="#">Click here</a> to create a new incident.<br><br>
+                                
                                 <br>
                             </span>
                         </form>
@@ -84,7 +94,7 @@
                     <span id="incident-id"></span><br><br>
                 </div>
                 <!-- restart query -->
-                <div class="text-align-center" id="restart"><a onclick="displayWindow(true)" href="#">Continue with other query</a></div>
+                <!-- <div class="text-align-center" id="restart"><a onclick="displayWindow(true)" href="#">Continue with other query</a></div> -->
                 <!-- loader -->
                 <div id="loader-id" class="overlay">
                     <div class="loader"></div>

@@ -253,7 +253,7 @@ function displayHelpList(contentOptions,issueList) {
     }
     if(issueList.length>noHelpOption){
         listItem = document.createElement('div');
-        listItem.innerHTML = '<li  class="options load-more" onclick="loadMore(\''.concat(issueList, '\')"><i class="fa fa-refresh" style="margin-right:10px"></i>',
+        listItem.innerHTML = '<li id="load-more" class="options load-more" onclick="loadMore(\''.concat(issueList, '\')"><i class="fa fa-refresh" style="margin-right:10px"></i>',
             'Load More' + '</li>');
     }
     contentOptions.appendChild(listItem);
@@ -264,7 +264,9 @@ function loadMore(issueList) {
     issueList.splice(0,noHelpOption);
     if(issueList.length > 0 ){
         var contentOptions = document.getElementById('content-optionsid');
-        contentOptions.innerHTML = '';
+        var loadMore = document.getElementById('load-more');
+        loadMore.parentNode.removeChild(loadMore);
+
         displayHelpList(contentOptions,issueList);
     }
 }
