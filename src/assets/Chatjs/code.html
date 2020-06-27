@@ -14,26 +14,31 @@
             <!-- Help Window -->
             <div id="window-id" *ngIf="showWindow" class="windowid">
                 <!-- main greetings -->
-                <div class="greetings main ">Hi! I am <span id="app-name"> {{name}}</span> Agent Assist
-                    <span id="min-span" style="    right: 85px;"><button id="close-button" onclick="displayWindow(true)">
-                        <i class="fa fa-question-circle-o" style="font-size: 15px;"></i></button></span>
-                    <span id="min-span"><button id="close-button" onclick="minWindow()">
-                        <i class="fa fa-window-minimize" style="font-size: 10px;"></i></button></span>
-                    <!-- close buttton -->
-                    <span id="close-span"><button id="close-button" onclick="closeWindow()">&#10006;</button></span>
+                <div class="greetings main col-md-12">
+                    <div class="col-md-8">Hi! I am <span id="app-name"> {{name}}</span> Agent Assist</div>
+                    <div class="col-md-4 action-button">
+                        <span><button class="help-btn" onclick="displayWindow(true)">
+                            <i class="fa fa-question-circle-o"></i></button></span>
+                        <span><button class="min-btn" onclick="minWindow()">
+                            <i class="fa fa-window-minimize"></i></button></span>
+                        <span><button class="close-btn" onclick="closeWindow()">
+                            <i class="fa fa-times"></i></button></span>
+                    </div>
                 </div>
                 <!-- sub greetings -->
-                <h3 class="size-20 " id="greeting-id">How can I help you today?</h3>
-                <!-- window content -->
-                <div>
-                    <div id="fourth-row content">
-                        <span id="contentid" class="message to">
-                            <i class="fa fa-angle-double-right" id="double-arrow"></i>
-                            <!-- <span id="contentselected"></span> -->
-                        </span>
+                <div id="greeting-id">
+                    <h4>How can I help you today?</h4>
+                    <!-- window content -->
+                    <div class="col-md-12">
+                        <div id="fourth-row content">
+                            <span id="contentid" class="message to">
+                                <i class="fa fa-angle-double-right" id="double-arrow"></i>
+                                <!-- <span id="contentselected"></span> -->
+                            </span>
+                        </div>
+                        <div id="content-optionsid"></div>
+                        
                     </div>
-                    <div id="content-optionsid"></div>
-                    
                 </div>
                 <!-- <div id="ask-more-info" style="display: none;" id="fourth-row">
                     <br><br>
@@ -43,21 +48,21 @@
                     <span id ="kedb" class="message to">
                         <!-- found in Kedb -->
                         <form>
-                            <span id="kedb-true" class="message to">
-                                <div>We are aware of this issue and working on it to make it better.</div>
-                                <div id="ticketid"></div><div style="text-align: center;color: gainsboro;">or</div>
-                                <a class="text-align-center" onclick="createIncident()" href="#">Click here</a> to create a new incident.<br>
+                            <span id="kedb-true">
+                                <span>Hey! The fix for this issue is under progress.You can track by reference id:</span>
+                                <span id="ticketid"></span><div>OR</div>
+                                <a class="link" onclick="createIncident()" href="#">Create a new incident?</a>
                                 <div id="suggestion"></div>
                                 <br>
                                 <!-- feedback -->
                                 <div id="feedback" class="col-md-12">
                                     <div class="row">
-                                        <div class="col-sm-6" style="background-color:white;padding: 0px;">Is it helpful?</div>
-                                        <div class="col-sm-6" style="background-color:white;padding: 0px;"><i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i><i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i></div>
+                                        <div class="col-sm-6 hori-center right-text">Is it helpful?</div>
+                                        <div class="col-sm-6 left-text"><i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i><i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i></div>
                                       </div>
                                       <div class="row">
-                                        <div class="col-sm-8" style="background-color:white;padding: 0px;"><input type="text" class="bubble" id="userfeedback" required placeholder="feedback"  name="userfeedback" wrap="hard"></input></div>
-                                        <div class="col-sm-4" style="background-color:white;padding: 0px;"><button id="blink" class="feedback-submit" onclick="provideFeedback(true)" type="button ">Submit</button></div>
+                                        <div class="col-sm-8"><input type="text" class="bubble" required placeholder="Provide feedback"  name="userfeedback" wrap="hard"></input></div>
+                                        <div class="col-sm-4"><button id="blink" class="feedback-submit" onclick="provideFeedback(true)" type="button ">Submit</button></div>
                                       </div>
                                     </div>
                                 
@@ -73,20 +78,19 @@
                     
                         <!-- not found in Kedb -->
                         <form>
-                            <span id="kedb-false" class="message to">
-                                <div id="not-supported"></div><br>
-                                Please <a class="text-align-center"  onclick="createIncident()" href="#">Click here</a> to create a new incident and we will get it resolved.<br><br><br>
+                            <span id="kedb-false">
+                                <div id="not-supported"></div>
+                                <!-- Please <a class="text-align-center"  onclick="createIncident()" href="#">Click here</a> to create a new incident and we will get it resolved.<br><br><br> -->
                             </span>
                         </form>
                 </span>
-                <br><br>
                 </div>
                 <!-- create incident form -->
-                <div id="create-Incident"><br><div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
+                <div id="create-Incident"><div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
                     <form>
-                        <label>Add more description</label>
-                        <textarea id ="userInputDescription" id: "userInputDescription" required placeholder="" rows="8" cols="24" name="userInputDescription" wrap="hard"></textarea><br>
-                        <button id = "incident-button" class="button" onclick="logIncident(this.form)" type="button">Create Incident</button>
+                        <span>Add more description</span>
+                        <textarea id: "userInputDescription" required placeholder="" name="userInputDescription" wrap="hard"></textarea><br>
+                        <button class="feedback-submit" onclick="logIncident(this.form)" type="button">Create Incident</button>
                     </form>
                 </div>
                 <!-- incident response -->

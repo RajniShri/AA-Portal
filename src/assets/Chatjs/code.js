@@ -338,20 +338,21 @@ function displayErrorPresentinKEDB(splunkResponse) {
     if (ticketid != null) {
         ticketid.innerText = '';
 
-        ticketid.innerText = 'You can track this with the number : '.concat(splunkResponse.ticketNumber);
+        ticketid.innerText = splunkResponse.ticketNumber;
     }
-    if (splunkResponse.errorWorkaround !== null && splunkResponse.errorWorkaround !== undefined) {
+    if (splunkResponse.errorWorkaround !== null && splunkResponse.errorWorkaround !== undefined && splunkResponse.errorWorkaround!=='-') {
         var suggestion = document.getElementById('suggestion');
         suggestion.innerHTML = '<br><div style="font-size: 12px;">Meanwhile please try bellow workaround to avoid this isssue</div>';
         listItem = document.createElement('div');
         listItem.innerHTML = '<li style="font-size: 16px!important;list-style: circle;margin: 0px;  padding: 0px;" id="fourth-row" class="options">'.concat(
             splunkResponse.errorWorkaround, '</li>');
         suggestion.appendChild(listItem);
-        var feedback = document.getElementById('feedback');
+        
+    }
+    var feedback = document.getElementById('feedback');
         feedback.style.display = 'block';
         var feedback = document.getElementById('feedback-ok');
         feedback.style.display = 'none';
-    }
     var kedbFalse = document.getElementById('kedb-false');
     kedbFalse.style.display = 'none';
 }

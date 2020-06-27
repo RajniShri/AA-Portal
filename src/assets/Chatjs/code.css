@@ -97,24 +97,6 @@
     margin-left: -9px;
 }
 
-.message.to {
-    /* width: 65%; */
-    background-color: #009fc7;
-    color: white;
-    border-radius: 10px;
-    text-align: inherit;
-    min-height: 35px;
-    font-size: 20px;
-    padding-top: 5px;
-    margin-bottom: 5px;
-    padding-bottom: 6px;
-    padding-top: 10px;
-    font-family: PTSans-Regular, sans-serif;
-    padding-right: 15px;
-    padding-left: 15px;
-    display: inline-block;
-}
-
 .message.from {
     background-color: rgb(236, 236, 236);
     color: black;
@@ -192,19 +174,7 @@ h2 {
 
 .greetings {
     position: relative;
-    font-size: 17px!important;
-    font-family: PTSans-Regular, sans-serif;
-    font-weight: 700;
-    letter-spacing: 0;
-}
-
-.size-20 {
-    margin-top: 5px;
-    margin-right: 10px;
-    margin-left: 5px;
-    position: relative;
-    color: #041e41;
-    font-size: 15px!important;
+    font-size: 13px!important;
     font-family: PTSans-Regular, sans-serif;
     font-weight: 700;
     letter-spacing: 0;
@@ -212,7 +182,7 @@ h2 {
 
 .greetings.main {
     background: #009fc7;
-    padding: 10px;
+    padding: 7px 0px 2px;
     color: white;
     border-radius: 10px 10px 0px 0px;
 }
@@ -278,45 +248,61 @@ h2 {
     position: relative;
     right: 0px;
 }
-
-#close-button {
+.action-button {
+    padding-right: 0px;
+    text-align: right;
+}
+.action-button button{
     border: none;
-    font-size: 15px;
-    color: white;
+    text-align: right;
+    margin-right: 8px;
     background-color: #009fc7;
+    
 }
-#close-span {
-    right: -70px;
-    position: relative;
+.action-button .help-btn {
+    font-size: 15px;
 }
-#min-span{
-    position: fixed;
-    padding: 2px;
-    right: 63px;
-    font-size: 10px;
+.action-button .min-btn {
+    font-size: 9px;
+}
+.action-button .close-btn {
+    font-size: 15px;
 }
 .fourth-row .content{
     margin-left: 10px;
 }
-
-#kedb-response{
+#ticketid {
+    font-weight: 700;
+}
+#kedb-response,#create-Incident,#greeting-id{
     display: none;
-    font-size: 10px;
+    font-size: 15px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-family: initial;
+}
+#create-Incident,#greeting-id{
+    text-align: left;
+}
+#create-Incident textarea {
+    width: 100%;
+    padding: 5px;
+}
+a.link {
+    font-size: 13px;
 }
 #kedb{
     padding-top: 0px;
     margin-left: 0px;
     background-color: white;
     color: #2a3466;
-    font-weight: 700;
 }
 #kedb-true{
-    font-size: 12px;
     display: none;
     margin-left: 0px;
     background-color: white;
     color: #2a3466;
-    font-weight: 700;
 }
 #contentid{
     padding-top: 3px;
@@ -325,7 +311,6 @@ h2 {
     border-radius: 20px;
     background-color: white;
     color: #2a3466;
-    font-weight: 700;
     display: none;
 }
 
@@ -370,13 +355,8 @@ h2 {
 .options {
     cursor: pointer;
     padding: 5px;
-    text-align: left;
     list-style: none;
     font-size: 14px!important;
-    margin-left: 10px;
-    font-family: PTSans-Regular, sans-serif;
-    width: fit-content;
-    padding-right: 15px;
 }
 
 .options:hover {
@@ -438,62 +418,25 @@ h2 {
     color: #2a3466;
     font-weight: 700;
 }
-#error-screen{
-    color: #2a3466;
-    margin-left: 10px;
-    font-family: PTSans-Regular, sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-}
-
-label {
-    font-size: 15px;
-    margin-left: 0px;
-    background-color: white;
-    color: #2a3466;
-    font-family: PTSans-Regular, sans-serif;
-    font-weight: 700;
-}
-
-#userInputDescription{
-    height: 20%;
-    width: 65%;
-    font-weight: 700;
-    font-family: PTSans-Regular, sans-serif;
-}
-
-#incident-button{
-    padding: 5px 10px;
-    font-family: PTSans-Regular, sans-serif;
-}
 .help-button {
     float: right;
     margin-right: 40px;
     margin-bottom: 40px;
 }
+.hori-center{
+    padding: 6px 0px 0px;
+}
+.right-text {
+    text-align: right;
+}
+.left-text {
+    text-align: left;
+}
 #feedback {
     display: none;
-    font-size: 12px;
     bottom: 20px;
+    left: 0;
     position: absolute;
-}
-#userfeedback {
-    height: 20%;
-    font-weight: 700;
-    border-left: none;
-    border-top: none;
-    border-right: none;
-    width: 95%;
-}
-#possitive{
-    font-size:20px;
-    cursor: pointer;
-    padding: 5px;
-}
-#negative{
-    font-size:20px;
-    cursor: pointer;
-    padding: 5px;
 }
 #feedback-ok{
     display: none;
@@ -508,10 +451,6 @@ label {
     height: 30px;
 }
 .text-align-center {
-    text-align: center;
-}
-#create-Incident{
-    display: none;
     text-align: center;
 }
 #restart {
@@ -535,18 +474,25 @@ label {
 }
 
 .bubble{
-    position: relative;
     padding: 5px;
-    border: 2px solid #000;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }
 .row{
     width: 100%;
 }
+.fa-thumbs-up,.fa-thumbs-down {
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px;
+}
 .feedback-submit{
-    padding: 5px 12px;
-    border-radius: 10px;
+    margin-top: 8px;
+    padding: 2px 8px;
+    border-radius: 5px;
     color: white;
     background-color: rgb(2, 204, 2);
     border: none;
-    box-shadow: 4px 3px #919090;
 }
