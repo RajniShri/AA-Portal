@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+            <title>SaConnect</title>
+            <base href="/">
+                <meta name="viewport"  content="width=device-width, initial-scale=1">
+                    <link rel="icon"  type="image/x-icon"  href="favicon.ico">
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+                        <script>
+                            $('<script />', {
+                                type: 'text/javascript',
+                                src: '/assets/Chatjs/app-config.js'
+                            }).appendTo('body');
+                        </script>
+                        <script>
+                            $('<script />', {
+                                type: 'text/javascript',
+                                src: '/assets/Chatjs/code.js'
+                            }).appendTo('body');
+                        </script>
+
+                        <script>
+                            $(function() {
+                                $("#includedContent").load("/assets/Chatjs/code.html");
+                            });
+                        </script>
+                        <script>
+                            $("<link/>", {
+                                rel: "stylesheet",
+                                type: "text/css",
+                                href: "/assets/Chatjs/code.css"
+                            }).appendTo("body");
+                        </script>
+
+
+    </head>
+
+    <body>
+        <app-root></app-root>
+        <router-outlet></router-outlet>
+        <div class='chat' id='includedContent'></div>
+jukl
+    </body>
+
+    </html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/assets/Chatjs/app-config.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <section class="container">
+        <div class="chat-popup" id=myform>
+            <!-- Help Button -->
+            <div *ngIf="!showWindow " id="help"><button id="blink" class="button help-button" onclick="displayWindow(false) " type="button ">Help</button></div>
+            <!-- Help Window -->
+            <div id="window-id" *ngIf="showWindow" class="windowid">
+                <!-- main greetings -->
+                <div class="greetings main ">Hi! I am <span id="app-name"> {{name}}</span> Agent Assist
+                    <span id="min-span"><button id="close-button" onclick="minWindow()">
+                        <i class="fa fa-window-minimize" style="font-size: 10px;"></i></button></span>
+                    <!-- close buttton -->
+                    <span id="close-span"><button id="close-button" onclick="closeWindow()">&#10006;</button></span>
+                </div>
+                <!-- sub greetings -->
+                <h3 class="size-20 " id="greeting-id">How can I help you today?</h3>
+                <!-- window content -->
+                <div>
+                    <div id="fourth-row content">
+                        <span id="contentid" class="message to">
+                            <i class="fa fa-angle-double-right" id="double-arrow"></i>
+                            <!-- <span id="contentselected"></span> -->
+                        </span>
+                    </div>
+                    <div id="content-optionsid"> </div>
+                </div>
+                <!-- <div id="ask-more-info" style="display: none;" id="fourth-row">
+                    <br><br>
+                </div> -->
+                <!-- KEDB response -->
+                <div id="kedb-response" id="fourth-row">
+                    <span id ="kedb" class="message to">
+                        <!-- found in Kedb -->
+                        <form>
+                            <span id="kedb-true" class="message to">
+                                <div>We are aware of this issue and working on it to make it better.</div>
+                                <div id="ticketid"></div>
+                                <div id="suggestion"></div>
+                                <br>
+                                <!-- feedback -->
+                                <div id="feedback">
+                                    <div>Please provide your valuable feedback</div>
+                                    <textarea id="userfeedback" required placeholder="" rows="2" cols="38" name="userfeedback" wrap="hard"></textarea>
+                                    <i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i>
+                                    <i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i>
+                                </div>
+                                <div id="feedback-ok">
+                                    <div>Thank you for your feedback.</div>
+                                </div>
+                                <br>
+                                <a class="text-align-center" onclick="createIncident()" href="#">Click here</a> to create a new incident.<br><br>
+                                <br>
+                            </span>
+                        </form>
+                    
+                        <!-- not found in Kedb -->
+                        <form>
+                            <span id="kedb-false" class="message to">
+                                <div id="not-supported"></div><br>
+                                Please <a class="text-align-center"  onclick="createIncident()" href="#">Click here</a> to create a new incident and we will get it resolved.<br><br><br>
+                            </span>
+                        </form>
+                </span>
+                <br><br>
+                </div>
+                <!-- create incident form -->
+                <div id="create-Incident"><br><div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
+                    <form>
+                        <label>Add more description</label>
+                        <textarea id ="userInputDescription" id: "userInputDescription" required placeholder="" rows="8" cols="24" name="userInputDescription" wrap="hard"></textarea><br>
+                        <button id = "incident-button" class="button" onclick="logIncident(this.form)" type="button">Create Incident</button>
+                    </form>
+                </div>
+                <!-- incident response -->
+                <div id="ticket-response" class="message to">
+                    <span id="incident-id"></span><br><br>
+                </div>
+                <!-- restart query -->
+                <div class="text-align-center" id="restart"><a onclick="displayWindow(true)" href="#">Continue with other query</a></div>
+                <!-- loader -->
+                <div id="loader-id" class="overlay">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <script src="/assets/Chatjs/Constants.js" type="text/javascript"></script> -->
+    <script src="/assets/Chatjs/code.js" type="text/javascript"></script>
+
+</body>
+<!-- <script src="/assets/Chatjs/Constants.js" type="text/javascript"></script> -->
+<script src="/assets/Chatjs/code.js" type="text/javascript"></script>
+
+
+</html>
