@@ -92,12 +92,16 @@
                 </div>
                 </div>
                 <!-- create incident form -->
-                <div id="create-Incident"><div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
-                    <form>
-                        <span>Add more description</span>
-                        <textarea id: "userInputDescription" required placeholder="" name="userInputDescription" wrap="hard"></textarea><br>
-                        <button class="feedback-submit" onclick="logIncident(this.form)" type="button">Create Incident</button>
-                    </form>
+                <div id="create-Incident">
+                    <h4 class="create-incident-screen"><b>Your incident will be created with below details: </b></h4>
+                    <div class="create-incident-form">
+                        <div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
+                        <form>
+                            <span>Add more description</span>
+                            <textarea id: "userInputDescription" required placeholder="" name="userInputDescription" wrap="hard"></textarea><br>
+                            <button class="feedback-submit" onclick="logIncident(this.form)" type="button">Create Incident</button>
+                        </form>
+                    </div>
                 </div>
                 <!-- incident response -->
                 <div id="ticket-response" class="message to">

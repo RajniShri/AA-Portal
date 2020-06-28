@@ -299,6 +299,12 @@ h2 {
     width: 100%;
     padding: 5px;
 }
+.create-incident-screen{
+    font-size: 14px;
+}
+.create-incident-form{
+    padding-left: 20px;
+}
 a.link {
     font-size: 13px;
 }
