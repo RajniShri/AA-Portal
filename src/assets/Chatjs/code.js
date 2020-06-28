@@ -17,6 +17,7 @@ var splunkResponse = {};
 var feedbackRequest = {};
 var helpRequest = {};
 var helpOptionList = null;
+var feedbackType = null;
 
 // Mock
 var mockResponseVal = mockResponse;
@@ -84,13 +85,22 @@ function displayHelpFlow(response){
     contentOptions.innerHTML = '';
     if (response !== '') {
         var issueList = JSON.parse(response);
+        helpOptionList = issueList;
         displayHelpList(contentOptions,issueList);
     }else {
         displayHelpResource(contentOptions,response);
     }
 }
 
-function provideFeedback(response) {
+function provideFeedback(feedback){
+    feedbackType = feedback;
+}
+
+function submitFeedback() {
+    if(feedbackType == null){
+        console.log("dcsd")
+        return;
+    }
     const Http = new XMLHttpRequest();
     const url = 'http://localhost:8080/updateFeedback';
     Http.open("POST", url, true);
@@ -102,8 +112,8 @@ function provideFeedback(response) {
             feedback.style.display = 'none';
             var feedbackok = document.getElementById('feedback-ok');
             feedbackok.style.display = 'block';
-            if (!response) {
-                feedbackok.innerText = 'Thank you for your feedback. We always try to improve our system to assist you better';
+            if (!feedbackType) {
+                feedbackok.innerText = 'Thank you for your feedback.\n We always try to improve our system to assist you better.';
             }
         }
     }
@@ -111,16 +121,23 @@ function provideFeedback(response) {
     feedbackRequest.ErrorDescription = errorDescription;
     feedbackRequest.action = 'merge';
     feedbackRequest.ErrorCode = errorCode;
-    var feedback = document.getElementById('userfeedback');
+    var userfeedback = document.getElementById('userfeedback');
 
     feedbackRequest.Feedback = userfeedback.value ? userfeedback.value.trim() : '';
-    if (response) {
+    if (feedbackType) {
         feedbackRequest.FeedbackCount = 1;
         Http.send(JSON.stringify(feedbackRequest));
     } else {
         feedbackRequest.FeedbackCount = -1;
         Http.send(JSON.stringify(feedbackRequest));
     }
+    feedbackType = null;
+    var kedbEliment = document.getElementById('kedb-response');
+    kedbEliment.style.display = 'none';
+    var greetingId = document.getElementById('greeting-id');
+    greetingId.style.display = 'none';
+    var ticketResponse = document.getElementById('ticket-response');
+    ticketResponse.style.display = 'none';
 }
 
 
@@ -194,6 +211,8 @@ function createIncident() {
     errorScreen.innerText = 'Issue occurred in '.concat(screen, ' screen of ', lob);
     var kedbTrue = document.getElementById('kedb-response');
     kedbTrue.style.display = 'none';
+    var feedbackSection = document.getElementById('feedback-section');
+    feedbackSection.style.display = 'none';
 }
 
 //http://localhost:8080/rest/suggestion/Auto/CustomerInfo
@@ -204,6 +223,8 @@ function createIncident() {
 
 
 function loadHelpDetails(){
+    var feedbackSection = document.getElementById('feedback-section');
+    feedbackSection.style.display = 'block';
     if(helpOptionList !== null){
         var contentOptions = document.getElementById('content-optionsid');
         contentOptions.innerHTML = '';
@@ -225,6 +246,8 @@ function loadHelpDetails(){
 }
 
 function loadErrorDetails(){
+    var feedbackSection = document.getElementById('feedback-section');
+    feedbackSection.style.display = 'block';
     if (window.location.href.indexOf(screenKeyDriver) > -1) {
         lob = 'Personal Auto';
         screen = 'Driver';
@@ -244,7 +267,6 @@ function loadErrorDetails(){
 }
 
 function displayHelpList(contentOptions,issueList) {
-    helpOptionList = issueList;
     for (i = 0; i < noHelpOption && issueList[i] !== undefined; ++i) {
         listItem = document.createElement('div');
         listItem.innerHTML = '<li id="fourth-row" class="options" onclick="getHelpOptions(null,\''.concat(issueList[i], '\')"><a><i class="fa fa-angle-double-right" style="margin-right:10px"></i>',
@@ -312,11 +334,20 @@ function loadBasicWindow(){
 
     var kedbTrue = document.getElementById('kedb-response');
     kedbTrue.style.display = 'none';
-
+    loadFeedbackSection();
     var ticketResponse = document.getElementById('ticket-response');
     ticketResponse.style.display = 'none';
     var contentOptions = document.getElementById('content-optionsid');
     contentOptions.innerHTML = '';
+}
+
+function loadFeedbackSection(){
+    var feedbackSection = document.getElementById('feedback-section');
+    feedbackSection.style.display = 'block';
+    var feedback = document.getElementById('feedback');
+    feedback.style.display = 'block';
+    var feedbackok = document.getElementById('feedback-ok');
+    feedbackok.style.display = 'none';
 }
 
 function displayNotSupported(){
@@ -382,11 +413,10 @@ function displayLoggedIncident(Http,form){
         incident.style.color = 'red';
         incident.style.fontSize = 'smaller';
     } else {
-        incident.innerHTML = '<span id="incident-id" style="color: rgb(4, 30, 65);">Thank you for contacting <div><b>'.concat(
-            applicationName, ' Agent Assist.</b></div><br/>',
-            'Incident has been created.<br>Incident ID :<b>', Http.responseText, '</b></span>');
+        incident.innerHTML = '<span id="incident-id" >'+
+                'Incident has been created <br><b>'+ Http.responseText+ '</b></span><br><span class="thankyou">Thank you for contacting <br><b>'+applicationName+' Agent Assist.</b></span>';
     }
     var loader = document.getElementById('loader-id');
     loader.style.display = 'none';
-    
+    loadFeedbackSection();
 }

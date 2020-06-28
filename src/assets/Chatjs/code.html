@@ -54,26 +54,11 @@
                                 <a class="link" onclick="createIncident()" href="#">Create a new incident?</a>
                                 <div id="suggestion"></div>
                                 <br>
-                                <!-- feedback -->
-                                <div id="feedback" class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-sm-6 hori-center right-text">Is it helpful?</div>
-                                        <div class="col-sm-6 left-text"><i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i><i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i></div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-8"><input type="text" class="bubble" required placeholder="Provide feedback"  name="userfeedback" wrap="hard"></input></div>
-                                        <div class="col-sm-4"><button id="blink" class="feedback-submit" onclick="provideFeedback(true)" type="button ">Submit</button></div>
-                                      </div>
-                                    </div>
                                 
-                                
-                                <div id="feedback-ok">
-                                    <div>Thank you for your feedback.</div>
-                                </div>
                                 <br>
                                 
                                 <br>
-                            </span>
+                            </span>                            
                         </form>
                     
                         <!-- not found in Kedb -->
@@ -84,6 +69,27 @@
                             </span>
                         </form>
                 </span>
+                </div>
+                <!-- feedback section-->
+                <div id="feedback-section">
+                <div id="feedback" class="col-md-12 ">
+                    <div class="row">
+                        <div class="col-sm-6 hori-center right-text">Is it helpful?</div>
+                        <div class="col-sm-6 left-text">
+                            <i class="fa fa-thumbs-up" id="possitive" onclick="provideFeedback(true)"></i>
+                            <i class="fa fa-thumbs-down" id="negative" onclick="provideFeedback(false)"></i>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-8"><input required type="text" class="bubble" required placeholder="Provide feedback"  id="userfeedback"></input></div>
+                        <div class="col-sm-4"><button class="feedback-submit" onclick="submitFeedback()">Submit</button></div>
+                      </div>
+                    </div>
+                
+                
+                <div id="feedback-ok" class="thankyou">
+                    <div>Thank you for your feedback.</div>
+                </div>
                 </div>
                 <!-- create incident form -->
                 <div id="create-Incident"><div id="error-screen"> Issue occred in Customer info screen of Personal Auto</div><br>
