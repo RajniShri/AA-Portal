@@ -18,6 +18,7 @@ var feedbackRequest = {};
 var helpRequest = {};
 var helpOptionList = null;
 var feedbackType = null;
+var minWindowVal = null;
 
 // Mock
 var mockResponseVal = mockResponse;
@@ -25,11 +26,17 @@ var mocKEDBResponse = KEDBResponse;
 var mockHelpResponse = HelpResponse;
 
 function displayWindow(reset) {
-    loadBasicWindow();
     if(reset){
         this.uniqueIssueSerchKey = null;
         helpOptionList = null;
+        minWindowVal = null;
     }
+    if(minWindowVal == true) {
+        openWindow();
+        minWindowVal = null;
+        return;
+    }
+    loadBasicWindow();
     if (this.uniqueIssueSerchKey == null) {
         loadHelpDetails();
     } else {
@@ -43,6 +50,7 @@ function minWindow() {
     windowid.style.display = 'none';
     var help = document.getElementById('help')
     help.style.display = 'block';
+    minWindowVal = true;
 }
 
 function closeWindow() {
@@ -305,6 +313,7 @@ function blink(uniqueIssueSerchKey) {
     help.style.animationName = 'flash';
     help.style.animationDuration = '1s';
     this.uniqueIssueSerchKey = uniqueIssueSerchKey;
+    minWindowVal = null;
 }
 
 function loadBasicWindow(){
@@ -314,10 +323,6 @@ function loadBasicWindow(){
     loader.style.display = 'none';
     var contentid = document.getElementById('contentid')
     contentid.style.display = 'none';
-
-    // var askMoreInfo = document.getElementById('ask-more-info')
-    // askMoreInfo.style.display = 'none';
-
     var createIncident = document.getElementById('create-Incident')
     createIncident.style.display = 'none';
 
@@ -325,12 +330,7 @@ function loadBasicWindow(){
     appName.innerHTML = applicationName;
 
 
-    var windowid = document.getElementById('window-id')
-
-    windowid.style.display = 'block';
-
-    var help = document.getElementById('help')
-    help.style.display = 'none';
+    openWindow();
 
     var kedbTrue = document.getElementById('kedb-response');
     kedbTrue.style.display = 'none';
@@ -339,6 +339,13 @@ function loadBasicWindow(){
     ticketResponse.style.display = 'none';
     var contentOptions = document.getElementById('content-optionsid');
     contentOptions.innerHTML = '';
+}
+
+function openWindow(){
+    var windowid = document.getElementById('window-id');
+    windowid.style.display = 'block';
+    var help = document.getElementById('help');
+    help.style.display = 'none';
 }
 
 function loadFeedbackSection(){
