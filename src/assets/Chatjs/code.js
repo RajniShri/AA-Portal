@@ -395,6 +395,8 @@ function displayErrorNotPresentinKEDB() {
     notSupported.innerText = 'Sorry! we did not find any related issue.';
     var kedbTrue = document.getElementById('kedb-true');
     kedbTrue.style.display = 'none';
+    var feedbackSection = document.getElementById('feedback-section');
+    feedbackSection.style.display = 'none';
 }
 
 function displayLoggedIncident(Http,form){
