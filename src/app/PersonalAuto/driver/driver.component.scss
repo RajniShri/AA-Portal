@@ -6,3 +6,14 @@
     height: 100%;
     background-size: auto 100%;
 }
+.app-button{
+    border: none;
+    margin-right: 30px; 
+    background-color:rgb(255, 255, 255);
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    position: absolute;
+    top: 25%;
+    cursor: pointer;
+}
