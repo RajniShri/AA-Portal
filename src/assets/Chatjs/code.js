@@ -380,12 +380,10 @@ function displayErrorPresentinKEDB(splunkResponse) {
     }
     if (splunkResponse.errorWorkaround !== null && splunkResponse.errorWorkaround !== undefined && splunkResponse.errorWorkaround!=='-') {
         var suggestion = document.getElementById('suggestion');
-        suggestion.innerHTML = '<br><div style="font-size: 12px;">Meanwhile please try bellow workaround to avoid this isssue</div>';
-        listItem = document.createElement('div');
-        listItem.innerHTML = '<li style="font-size: 16px!important;list-style: circle;margin: 0px;  padding: 0px;" id="fourth-row" class="options">'.concat(
-            splunkResponse.errorWorkaround, '</li>');
-        suggestion.appendChild(listItem);
-        
+        workaround = document.createElement('div');
+        workaround.innerHTML = '<div class="create-incident-form">'.concat(
+            splunkResponse.errorWorkaround, '</div>');
+        suggestion.appendChild(workaround);
     }
     var feedback = document.getElementById('feedback');
         feedback.style.display = 'block';

@@ -286,7 +286,7 @@ h2 {
     width: 100%;
     margin-top: 10px;
 }
-#create-Incident,#greeting-id{
+#create-Incident,#greeting-id,#suggestion{
     text-align: left;
 }
 .thankyou{
@@ -304,6 +304,8 @@ h2 {
 }
 .create-incident-form{
     padding-left: 20px;
+    overflow-y: auto;
+    max-height: 80px;
 }
 a.link {
     font-size: 13px;
@@ -483,11 +485,6 @@ a.link {
 #content-optionsid{
     overflow-y: auto;
     height: 150px;
-}
-
-#suggestion{
-    overflow-y: auto;
-    max-height: 115px;
 }
 
 .bubble{
